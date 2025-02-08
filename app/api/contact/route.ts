@@ -21,6 +21,9 @@ export async function POST(request: NextRequest) {
       user: process.env.SMTP_USER, // Your email address (e.g., admin@smacmedia.com.ng)
       pass: process.env.SMTP_PASS, // Your email password
     },
+    // tls: {
+    //   rejectUnauthorized: false, // TEMPORARY - for testing only
+    // },
   });
 
   // Email options
