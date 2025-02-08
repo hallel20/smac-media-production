@@ -1,12 +1,10 @@
 "use client";
 import { useState, type FormEvent } from "react";
 import { Loader2, Send } from "lucide-react";
-import { toast } from "sonner";
+import { toast } from "react-hot-toast";
 
 interface ContactFormProps {
   className?: string;
-  onSuccess?: () => void;
-  onError?: (error: string) => void;
 }
 
 export function ContactForm({ className = "" }: ContactFormProps) {
