@@ -2,7 +2,11 @@ import Image from "next/image";
 
 const Team = () => {
   const teamMembers = [
-    { name: "Wilfred Oluwakamisi", role: "Founder & CEO", image: "/team/wilfred.png" },
+    {
+      name: "Wilfred Oluwakamisi",
+      role: "Founder & CEO",
+      image: "/team/wilfred.png",
+    },
     {
       name: "Hallel Ojowuro",
       role: "Operations Manager",
@@ -11,22 +15,18 @@ const Team = () => {
     {
       name: "Ayomide Filani",
       role: "Lead Photographer",
-      image: "/team/hallel.png",
+      image: "/team/ayoo.png",
     },
     {
       name: "Alfred Oluwatomisin",
       role: "Lead Videographer",
-      image: "/team/hallel.png",
+      image: "/team/alfred.png",
     },
-    {
-      name: "Ayomide Oye",
-      role: "Videographer",
-      image: "/team/hallel.png",
-    },
+    { name: "Ayomide Oye", role: "Videographer", image: "/team/user.png" },
     {
       name: "Oluwaseun Christopher",
       role: "Photographer",
-      image: "/team/hallel.png",
+      image: "/team/seun.png",
     },
   ];
 
@@ -49,14 +49,15 @@ const Team = () => {
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-2xl shadow-lg text-center"
+            className="bg-white p-6 rounded-2xl shadow-lg text-center transition-transform transform hover:scale-105"
           >
             <Image
               src={member.image}
-              alt={member.name}
-              width={300}
-              height={300}
-              className="w-32 h-32 mx-auto rounded-full mb-4 object-cover"
+              alt={`Photo of ${member.name}, ${member.role}`}
+              width={400}
+              height={400}
+              layout="responsive"
+              className="w-full h-auto rounded-full mb-4 object-cover"
             />
             <h3 className="text-2xl font-semibold text-gray-900">
               {member.name}
