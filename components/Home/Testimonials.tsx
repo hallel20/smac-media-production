@@ -1,90 +1,103 @@
 import { Star } from "lucide-react";
 import Image from "next/image";
 
-const testimonials = [
-  {
-    name: "Sarah Johnson",
-    role: "Creative Director, PixelPerfect Studios",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&h=200&auto=format&fit=crop",
-    content:
-      "The media team exceeded our expectations in every way. Their creative vision and technical expertise transformed our brand narrative into compelling visual stories that resonated deeply with our audience.",
-    rating: 5,
-  },
-  {
-    name: "Michael Chen",
-    role: "Marketing Head, TechVision Media",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop",
-    content:
-      "Working with this team has been transformative for our digital presence. Their attention to detail and innovative approach to content creation has helped us stand out in a crowded market.",
-    rating: 5,
-  },
-  {
-    name: "Emma Rodriguez",
-    role: "Production Manager, StreamlineMedia",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&h=200&auto=format&fit=crop",
-    content:
-      "The team's ability to blend creativity with strategic thinking is remarkable. They don't just create content; they craft experiences that leave lasting impressions.",
-    rating: 5,
-  },
-];
+// Testimonials Section
+const Testimonials = () => {
+  const testimonials = [
+    {
+      name: "Sarah Johnson",
+      role: "Creative Director",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&h=200&auto=format&fit=crop",
+      content: "The media team exceeded our expectations in every way. Their creative vision transformed our brand narrative into compelling visual stories.",
+      rating: 5
+    },
+    {
+      name: "Michael Chen",
+      role: "Marketing Head",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop",
+      content: "Working with this team has been transformative. Their attention to detail and innovative approach helped us stand out in a crowded market.",
+      rating: 5
+    },
+    {
+      name: "Emma Rodriguez",
+      role: "Production Manager",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&h=200&auto=format&fit=crop",
+      content: "The team's ability to blend creativity with strategic thinking is remarkable. They craft experiences that leave lasting impressions.",
+      rating: 5
+    }
+  ];
 
-export default function Testimonials() {
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="container px-4 mx-auto">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
+    <section className="py-24 bg-gradient-to-b from-white to-purple-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-block px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm font-semibold mb-4">
+            Client Success Stories
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Trusted by Industry Leaders
           </h2>
-          <p className="text-gray-600 dark:text-gray-300">
-            Don&apos;t just take our word for it. Here&apos;s what our clients
-            have to say about our media production excellence.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Hear what our clients have to say about their experience working with SMAC Media
           </p>
         </div>
 
+        {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <Image
-                  width={300}
-                  height={300}
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-gray-100 dark:ring-gray-700"
-                />
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {testimonial.role}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 text-yellow-400 fill-yellow-400"
-                  />
-                ))}
-              </div>
-
-              <p className="text-gray-600 dark:text-gray-300">
-                {testimonial.content}
-              </p>
-            </div>
+            <TestimonialCard key={index} {...testimonial} delay={index * 100} />
           ))}
         </div>
       </div>
     </section>
   );
+};
+
+interface ITestimonialCard {
+  name: string;
+  role: string;
+  image: string;
+  content: string;
+  rating: number;
+  delay: number;
 }
+
+// Testimonial Card
+const TestimonialCard = ({ name, role, image, content, rating, delay }: ITestimonialCard) => {
+  return (
+    <div 
+      className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      {/* Rating */}
+      <div className="flex gap-1 mb-6">
+        {[...Array(rating)].map((_, i) => (
+          <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+        ))}
+      </div>
+
+      {/* Content */}
+      <p className="text-gray-700 mb-6 leading-relaxed italic">
+        "{content}"
+      </p>
+
+      {/* Author */}
+      <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
+        <Image
+          src={image} 
+          alt={name}
+          width={100}
+          height={100}
+          className="w-14 h-14 rounded-full object-cover ring-4 ring-purple-100"
+        />
+        <div>
+          <h4 className="font-bold text-gray-900">{name}</h4>
+          <p className="text-sm text-gray-600">{role}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Testimonials

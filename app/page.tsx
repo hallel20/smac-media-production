@@ -1,30 +1,47 @@
-import Hero from "@/components/Home/Hero";
-import Testimonials from "@/components/Home/Testimonials";
-import Contact from "@/components/Home/Contact";
-import Services from "@/components/Home/Services";
+import Contact from '@/components/Home/Contact';
+import Hero from '@/components/Home/Hero';
+import Services from '@/components/Home/Services';
+import Testimonials from '@/components/Home/Testimonials';
+import React from 'react';
 
+
+// Main Homepage Component
 export default function Home() {
-
   return (
-    <div>
+    <div className="overflow-x-hidden">
+      <style>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1s ease-out;
+        }
+        
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+      `}</style>
+      
       <Hero />
       <Services />
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            What Our Clients Say
-          </h2>
-          <Testimonials />
-        </div>
-      </section>
-      {/* Contact Section */}
-      <section className="py-16 bg-gray-900 text-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
-          <Contact />
-        </div>
-      </section>
+      <Testimonials />
+      <Contact />
     </div>
   );
 }

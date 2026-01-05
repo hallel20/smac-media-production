@@ -20,7 +20,7 @@ export default function RootLayout({
         <div className="z-50">
           <Toaster position="top-right" />
         </div>
-        <main className="container mx-auto px-6 py-10">{children}</main>
+        <main className="">{children}</main>
         <Footer />
       </body>
     </html>
