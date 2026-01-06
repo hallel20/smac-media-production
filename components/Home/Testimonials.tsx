@@ -79,7 +79,7 @@ const TestimonialCard = ({ name, role, image, content, rating, delay }: ITestimo
 
       {/* Content */}
       <p className="text-gray-700 mb-6 leading-relaxed italic">
-        "{content}"
+        &quot;{content}&quot;
       </p>
 
       {/* Author */}

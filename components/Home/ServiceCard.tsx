@@ -1,5 +1,6 @@
 "use client"
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 interface IServiceCardProps {
@@ -11,6 +12,7 @@ interface IServiceCardProps {
 }
 // Service Card Component
 const ServiceCard = ({ title, image, description, icon: Icon, delay }: IServiceCardProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -22,9 +24,11 @@ const ServiceCard = ({ title, image, description, icon: Icon, delay }: IServiceC
     >
       {/* Image */}
       <div className="relative h-64 overflow-hidden">
-        <img 
+        <Image
           src={image} 
           alt={title}
+          width={300}
+          height={300}
           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>

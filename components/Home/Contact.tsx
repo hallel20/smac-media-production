@@ -27,7 +27,7 @@ const Contact = () => {
               Get In Touch
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Let's Create Something
+              Let&apos;s Create Something
               <span className="block text-yellow-400">Amazing Together</span>
             </h2>
             <p className="text-xl text-gray-300 mb-12 leading-relaxed">

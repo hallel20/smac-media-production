@@ -1,8 +1,10 @@
 "use client"
 import React, { useState } from 'react';
 import { Users, Award, Target, Sparkles, Camera, Video, Laptop, FileImage } from 'lucide-react';
+import Image from 'next/image';
 
 const Team = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const teamMembers = [
@@ -110,8 +112,10 @@ const Team = () => {
                   <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                     {/* Image Container with Gradient Overlay */}
                     <div className="relative h-80 overflow-hidden">
-                      <img
+                      <Image
                         src={member.image}
+                        width={300}
+                        height={300}
                         alt={`${member.name}, ${member.role}`}
                         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                       />

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 // Hero Component with Modern Design
 const Hero = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
